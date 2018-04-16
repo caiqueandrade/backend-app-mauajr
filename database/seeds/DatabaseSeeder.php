@@ -15,7 +15,8 @@ class DatabaseSeeder extends Seeder
             TarefasTableSeeder::class,
             NucleosDepartamentosTableSeeder::class,
             ProjetosTableSeeder::class,
-            ClientesTableSeeder::class
+            ClientesTableSeeder::class,
+            FaturamentosTableSeeder::class
         ]);
     }
 }

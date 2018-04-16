@@ -30,3 +30,6 @@ Route::get('/projetos', 'ProjetoController@findAll');
 
 // Clientes
 Route::get('/clientes', 'ClienteController@findAll');
+
+// Faturamentos
+Route::get('/faturamentos', 'FaturamentoController@findAll');
