@@ -13,7 +13,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             TarefasTableSeeder::class,
-            NucleosDepartamentosTableSeeder::class
+            NucleosDepartamentosTableSeeder::class,
+            ProjetosTableSeeder::class
         ]);
     }
 }

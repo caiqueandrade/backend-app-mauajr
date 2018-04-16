@@ -17,8 +17,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+// Tarefas
 Route::get('/tarefas', 'TarefaController@findAll');
 Route::get('/tarefas/{id}', 'TarefaController@findById');
 Route::post('/tarefas', 'TarefaController@create');
 
+// Núcleos e Departamentos
 Route::get('/nucleosDepartamentos', 'NucleoDepartamentoController@findAll');
+
+// Projetos
+Route::get('/projetos', 'ProjetoController@findAll');
