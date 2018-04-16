@@ -27,3 +27,6 @@ Route::get('/nucleosDepartamentos', 'NucleoDepartamentoController@findAll');
 
 // Projetos
 Route::get('/projetos', 'ProjetoController@findAll');
+
+// Clientes
+Route::get('/clientes', 'ClienteController@findAll');
