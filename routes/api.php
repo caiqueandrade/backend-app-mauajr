@@ -31,11 +31,11 @@ Route::put('/projetos/{id}', 'ProjetoController@update');
 Route::delete('/projetos/{id}', 'ProjetoController@remove');
 
 // Tarefas
-// Route::get('/tarefas', 'TarefaController@findAll');
-// Route::get('/tarefas/{id}', 'TarefaController@findById');
-// Route::post('/tarefas', 'TarefaController@create');
-// Route::put('/tarefas/{id}', 'TarefaController@update');
-// Route::delete('/tarefas/{id}', 'TarefaController@remove');
+Route::get('/tarefas', 'TarefaController@findAll');
+Route::get('/tarefas/{id}', 'TarefaController@findById');
+Route::post('/tarefas', 'TarefaController@create');
+Route::put('/tarefas/{id}', 'TarefaController@update');
+Route::delete('/tarefas/{id}', 'TarefaController@remove');
 
 // Clientes
 // Route::get('/clientes', 'ClienteController@findAll');

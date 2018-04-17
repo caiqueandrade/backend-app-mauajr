@@ -9,12 +9,12 @@ class TarefaController extends Controller
 {
     public function findAll() 
     {
-        return Tarefa::all()->toJson();
+        return response(Tarefa::all()->toJson(), 200);
     }
 
     public function findById($id) 
     {
-        return Tarefa::where('id', $id)->get()->toJson();
+        return response(Tarefa::where('id', $id)->get()->toJson(), 200);
     }
 
     public function create(Request $request)
@@ -30,5 +30,33 @@ class TarefaController extends Controller
 
             $tarefa->save();
         });
+
+        return response('Criado.', 201);
+    }
+
+    public function update(Request $request, $id)
+    {
+        \DB::transaction(function() use($request, $id)
+        {
+            $tarefa = Tarefa::find($id);
+
+            $tarefa->titulo = $request->input('titulo');
+            $tarefa->descricao = $request->input('descricao');
+            $tarefa->data_inicio = $request->input('data_inicio');
+            $tarefa->status = $request->input('status');
+
+            $tarefa->save();
+        });
+
+        return response('Atualizado.', 200);
+    }
+
+    public function remove($id)
+    {
+        \DB::transaction(function() use($id){
+            $tarefa = Tarefa::find($id);
+            $tarefa->delete();
+        });
+        return response('Ok.', 200);
     }
 }
