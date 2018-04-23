@@ -8,6 +8,26 @@ use App\Faturamento;
 class FaturamentoController extends Controller
 {
     public function findAll(){
-        return Faturamento::all()->toJson();
+        return response(Faturamento::all()->toJson(), 200);
+    }
+
+    public function findByID($id)
+    {
+        return response(Faturamento::where('id', $id)->get()->toJson());
+    }
+
+    public function create(Request $request)
+    {
+        \DB::transaction(function() use($request)
+        {
+            $faturamento = new Faturamento;
+
+            $faturamento->valor = $request->input('valor');
+            $faturamento->data_pagamento = $request->input('data_pagamento');
+
+            $faturamento->save();
+        });
+
+        return response('Criado.', 201);
     }
 }

@@ -40,7 +40,7 @@ Route::delete('/tarefas/{id}', 'TarefaController@remove');
 // Clientes
 Route::get('/clientes', 'ClienteController@findAll');
 Route::get('/clientes/{id}', 'ClienteController@findByID');
-Route::post('clientes', 'ClienteController@create');
+Route::post('/clientes', 'ClienteController@create');
 Route::put('/clientes/{id}', 'ClienteController@update');
 Route::delete('/clientes/{id}', 'ClienteController@remove');
 
@@ -49,7 +49,7 @@ Route::get('/nucleosDepartamentos', 'NucleoDepartamentoController@findAll');
 Route::get('/nucleosDepartamentos/{id}', 'NucleoDepartamentoController@findByID');
 
 // Faturamentos
-// Route::get('/faturamentos', 'FaturamentoController@findAll');
-// Route::get('/faturamentos', 'FaturamentoController@findByID');
-// Route::post('/faturamentos', 'FaturamentoController@create');
+Route::get('/faturamentos', 'FaturamentoController@findAll');
+Route::get('/faturamentos/{id}', 'FaturamentoController@findByID');
+Route::post('/faturamentos', 'FaturamentoController@create');
 
