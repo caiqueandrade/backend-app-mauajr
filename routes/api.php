@@ -45,8 +45,8 @@ Route::put('/clientes/{id}', 'ClienteController@update');
 Route::delete('/clientes/{id}', 'ClienteController@remove');
 
 // Núcleos e Departamentos
-// Route::get('/nucleosDepartamentos', 'NucleoDepartamentoController@findAll');
-// Route::get('/nucleosDepartamentos', 'NucleoDepartamentoController@findByID');
+Route::get('/nucleosDepartamentos', 'NucleoDepartamentoController@findAll');
+Route::get('/nucleosDepartamentos/{id}', 'NucleoDepartamentoController@findByID');
 
 // Faturamentos
 // Route::get('/faturamentos', 'FaturamentoController@findAll');
