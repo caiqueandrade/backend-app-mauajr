@@ -57,6 +57,6 @@ class TarefaController extends Controller
             $tarefa = Tarefa::find($id);
             $tarefa->delete();
         });
-        return response('Ok.', 200);
+        return response('Removido.', 200);
     }
 }

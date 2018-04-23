@@ -38,11 +38,11 @@ Route::put('/tarefas/{id}', 'TarefaController@update');
 Route::delete('/tarefas/{id}', 'TarefaController@remove');
 
 // Clientes
-// Route::get('/clientes', 'ClienteController@findAll');
-// Route::get('/clientes/{id}', 'ClienteController@findByID');
-// Route::post('clientes', 'ClienteController@create');
-// Route::put('/clientes/{id}', 'ClienteController@update');
-// Route::delete('/clientes/{id}', 'ClienteController@remove');
+Route::get('/clientes', 'ClienteController@findAll');
+Route::get('/clientes/{id}', 'ClienteController@findByID');
+Route::post('clientes', 'ClienteController@create');
+Route::put('/clientes/{id}', 'ClienteController@update');
+Route::delete('/clientes/{id}', 'ClienteController@remove');
 
 // Núcleos e Departamentos
 // Route::get('/nucleosDepartamentos', 'NucleoDepartamentoController@findAll');
