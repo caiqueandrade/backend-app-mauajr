@@ -14,9 +14,9 @@ class DatabaseSeeder extends Seeder
         $this->call([
             TarefasTableSeeder::class,
             NucleosDepartamentosTableSeeder::class,
-            ProjetosTableSeeder::class,
             ClientesTableSeeder::class,
-            FaturamentosTableSeeder::class
+            FaturamentosTableSeeder::class,
+            ProjetosTableSeeder::class
         ]);
     }
 }

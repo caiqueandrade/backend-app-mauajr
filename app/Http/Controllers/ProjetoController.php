@@ -19,17 +19,42 @@ class ProjetoController extends Controller
 
     public function create(Request $request)
     {
-        \DB::transaction(function() use($request)
+        try
         {
-            $projeto = new Projeto;
+            $cliente = \App\Cliente::where('id', $request->input('cliente_id'))->first();
+
+            if ($cliente === null)
+            {
+                return response()->json([
+                    'success' => 'false',
+                    'message' => 'Empresa não encontrada'
+                 ], 400);
+            }
+
+            $faturamento = \App\Faturamento::where('id', $request->input('faturamento_id'))->first();
+
+            \DB::transaction(function() use($request, $cliente)
+            {
+                $projeto = new Projeto;
+        
+                $projeto->nome = $request->input('nome');
+                $projeto->descricao = $request->input('descricao');
+                $projeto->data_inicio = $request->input('data_inicio');
+                $projeto->status = $request->input('status');
     
-            $projeto->nome = $request->input('nome');
-            $projeto->descricao = $request->input('descricao');
-            $projeto->data_inicio = $request->input('data_inicio');
-            $projeto->status = $request->input('status');
-    
-            $projeto->save();
-        });
+                $projeto->cliente()->associate($cliente);
+
+                $projeto->faturamento()->associate($faturamento);
+                $projeto->save();
+            });
+        }
+        catch (\Illuminate\Database\QueryException $exception)
+        {
+            return response()->json([
+                'success' => 'false',
+                'message' => $exception->errorInfo[2]
+             ], 400);
+        }
         return response('Criado.', 201);
     }
 

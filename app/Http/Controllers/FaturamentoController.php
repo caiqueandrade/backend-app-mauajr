@@ -7,13 +7,14 @@ use App\Faturamento;
 
 class FaturamentoController extends Controller
 {
-    public function findAll(){
-        return response(Faturamento::all()->toJson(), 200);
+    public function findAll()
+    {
+        return response(Faturamento::with('projetos')->get()->toJson(), 200);
     }
 
     public function findByID($id)
     {
-        return response(Faturamento::where('id', $id)->get()->toJson());
+        return response(Faturamento::where('id', $id)->get()->toJson(), 200);
     }
 
     public function create(Request $request)
