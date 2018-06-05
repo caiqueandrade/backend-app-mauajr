@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Faturamento extends Model
 {
-    public function faturamento()
+    public function projeto()
     {
         return $this->belongsTo('App\Projeto');
     }

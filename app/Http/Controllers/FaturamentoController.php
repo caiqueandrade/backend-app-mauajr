@@ -9,7 +9,8 @@ class FaturamentoController extends Controller
 {
     public function findAll()
     {
-        return response(Faturamento::with('projetos')->get()->toJson(), 200);
+        // return response(Faturamento::all()->toJson(), 200);
+        return response(Faturamento::with('projeto')->get()->toJson(), 200);
     }
 
     public function findByID($id)

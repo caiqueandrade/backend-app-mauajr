@@ -17,11 +17,11 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-// Route::get('usuarios', 'UsuarioController@findAll');
-// Route::get('usuario/{id}', 'UsuarioController@findByID');
-// Route::post('usuarios', 'UsuarioController@create');
-// Route::put('usuarios/{id}', 'UsuarioController@update');
-// Route::delete('usuarios/{id}', 'UsuarioController@remove');
+// Route::get('/usuarios', 'UsuarioController@findAll');
+// Route::get('/usuario/{id}', 'UsuarioController@findByID');
+// Route::post('/usuarios', 'UsuarioController@create');
+// Route::put('/usuarios/{id}', 'UsuarioController@update');
+// Route::delete('/usuarios/{id}', 'UsuarioController@remove');
 
 // Projetos
 Route::get('/projetos', 'ProjetoController@findAll');

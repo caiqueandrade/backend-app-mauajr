@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cliente extends Model
 {
-    public function projetos()
+    public function projeto()
     {
         return $this->hasMany('App\Projeto');
     }

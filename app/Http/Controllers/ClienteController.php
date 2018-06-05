@@ -9,7 +9,8 @@ class ClienteController extends Controller
 {
     public function findAll()
     {
-        return response(Cliente::with('projetos')->get()->toJson(), 200);
+        // return response(Cliente::all()->toJson(), 200);
+        return response(Cliente::with('projeto')->get()->toJson(), 200);
     }
 
     public function findByID($id)

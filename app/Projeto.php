@@ -15,4 +15,9 @@ class Projeto extends Model
     {
         return $this->hasOne('App\Faturamento');
     }
+
+    public function users()
+    {
+        return $this->hasMany('');
+    }
 }
