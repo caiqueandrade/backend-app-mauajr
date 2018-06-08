@@ -9,7 +9,7 @@ class ProjetoController extends Controller
 {
     public function findAll()
     {
-        return response(Projeto::all()->toJson(), 200);
+        return response(Projeto::with('faturamento')->get()->toJson(), 200);
     }
 
     public function findByID($id)
@@ -27,11 +27,19 @@ class ProjetoController extends Controller
             {
                 return response()->json([
                     'success' => 'false',
-                    'message' => 'Empresa não encontrada'
+                    'message' => 'ID do Cliente não encontrado.'
                  ], 400);
             }
 
             $faturamento = \App\Faturamento::where('id', $request->input('faturamento_id'))->first();
+
+            if ($faturamento === null)
+            {
+                return response()->json([
+                    'success' => 'false',
+                    'message' => 'ID do Faturamento não encontrado.'
+                 ], 400);
+            }
 
             \DB::transaction(function() use($request, $cliente)
             {

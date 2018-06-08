@@ -13,7 +13,7 @@ class Projeto extends Model
 
     public function faturamento()
     {
-        return $this->hasOne('App\Faturamento');
+        return $this->belongsTo('App\Faturamento');
     }
 
     public function users()

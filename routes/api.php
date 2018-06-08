@@ -14,12 +14,13 @@ use Illuminate\Http\Request;
 */
 
 // Usuários
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-// Route::get('/usuarios', 'UsuarioController@findAll');
-// Route::get('/usuario/{id}', 'UsuarioController@findByID');
-// Route::post('/usuarios', 'UsuarioController@create');
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+Route::get('/usuarios', 'UsuarioController@findAll');
+Route::get('/usuario/{id}', 'UsuarioController@findByID');
+Route::post('/usuario', 'UsuarioController@create')->middleware('jwt.auth');
+Route::post('/login', 'AuthController@login')->middleware('api');
 // Route::put('/usuarios/{id}', 'UsuarioController@update');
 // Route::delete('/usuarios/{id}', 'UsuarioController@remove');
 
@@ -31,11 +32,11 @@ Route::put('/projetos/{id}', 'ProjetoController@update');
 Route::delete('/projetos/{id}', 'ProjetoController@remove');
 
 // Tarefas
-Route::get('/tarefas', 'TarefaController@findAll');
-Route::get('/tarefas/{id}', 'TarefaController@findById');
-Route::post('/tarefas', 'TarefaController@create');
-Route::put('/tarefas/{id}', 'TarefaController@update');
-Route::delete('/tarefas/{id}', 'TarefaController@remove');
+// Route::get('/tarefas', 'TarefaController@findAll');
+// Route::get('/tarefas/{id}', 'TarefaController@findById');
+// Route::post('/tarefas', 'TarefaController@create');
+// Route::put('/tarefas/{id}', 'TarefaController@update');
+// Route::delete('/tarefas/{id}', 'TarefaController@remove');
 
 // Clientes
 Route::get('/clientes', 'ClienteController@findAll');

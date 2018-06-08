@@ -8,6 +8,6 @@ class Faturamento extends Model
 {
     public function projeto()
     {
-        return $this->belongsTo('App\Projeto');
+        return $this->hasOne('App\Projeto');
     }
 }

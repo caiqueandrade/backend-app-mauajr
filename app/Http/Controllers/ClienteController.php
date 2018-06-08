@@ -20,43 +20,71 @@ class ClienteController extends Controller
 
     public function create(Request $request)
     {
-        \DB::transaction(function() use($request)
+        try
         {
-            $cliente = new Cliente;
-
-            $cliente->nome = $request->input('nome');
-            $cliente->cnpj = $request->input('cnpj');
-
-            $cliente->save();
-        });
-
+            \DB::transaction(function() use($request)
+            {
+                $cliente = new Cliente;
+    
+                $cliente->nome = $request->input('nome');
+                $cliente->cnpj = $request->input('cnpj');
+    
+                $cliente->save();
+            });
+        }
+        catch (\Illuminate\Database\QueryException $exception)
+        {
+            return response()->json([
+                'success' => 'false',
+                'message' => $exception->errorInfo[2]
+             ], 400);
+        }
         return response('Criado.', 201);
     }
 
     public function update(Request $request, $id)
     {
-        \DB::transaction(function() use($request, $id)
+        try
         {
-            $cliente = Cliente::find($id);
+            \DB::transaction(function() use($request, $id)
+            {
+                $cliente = Cliente::find($id);
 
-            $cliente->nome = $request->input('nome');
-            $cliente->cnpj = $request->input('cnpj');
+                $cliente->nome = $request->input('nome');
+                $cliente->cnpj = $request->input('cnpj');
 
-            $cliente->save();
-        });
+                $cliente->save();
+            });
+        }
+        catch (\Illuminate\Database\QueryException $exception)
+        {
+            return response()->json([
+                'success' => 'false',
+                'message' => $exception->errorInfo[2]
+             ], 400);
+        }
 
         return response('Atualizado.', 200);
     }
 
     public function remove($id)
     {
-        \DB::transaction(function() use($id)
+        try
         {
-            $cliente = Cliente::find($id);
-
-            $cliente->delete();
-        });
-
+            \DB::transaction(function() use($id)
+            {
+                $cliente = Cliente::find($id);
+    
+                $cliente->delete();
+            });
+        }
+        catch (\Illuminate\Database\QueryException $exception)
+        {
+            return response()->json([
+                'success' => 'false',
+                'message' => $exception->errorInfo[2]
+             ], 400);
+        }
         return response('Removido.', 200);
     }
 }
