@@ -20,15 +20,25 @@ class FaturamentoController extends Controller
 
     public function create(Request $request)
     {
-        \DB::transaction(function() use($request)
+        try
         {
-            $faturamento = new Faturamento;
-
-            $faturamento->valor = $request->input('valor');
-            $faturamento->data_pagamento = $request->input('data_pagamento');
-
-            $faturamento->save();
-        });
+            \DB::transaction(function() use($request)
+            {
+                $faturamento = new Faturamento;
+    
+                $faturamento->valor = $request->input('valor');
+                $faturamento->data_pagamento = $request->input('data_pagamento');
+    
+                $faturamento->save();
+            });
+        }
+        catch (\Illuminate\Database\QueryException $exception)
+        {
+            return response()->json([
+                'success' => 'false',
+                'message' => $exception->errorInfo[2]
+             ], 400);
+        }
 
         return response('Criado.', 201);
     }
