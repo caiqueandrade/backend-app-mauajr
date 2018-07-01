@@ -41,7 +41,7 @@ class ProjetoController extends Controller
                  ], 400);
             }
 
-            \DB::transaction(function() use($request, $cliente)
+            \DB::transaction(function() use($request, $cliente, $faturamento)
             {
                 $projeto = new Projeto;
         
